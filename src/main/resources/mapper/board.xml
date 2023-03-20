@@ -3,7 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="shop.mtcoding.datatransperobjectex.model.BoardRepository">
+<mapper namespace="shop.mtcoding.datatransperobjectex.model.board.BoardRepository">
+
+    <select id="findByIdJoinUser" resultType="shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto">
+        select b.*,
+               u.id user_id,
+               u.username user_username,
+               u.password user_password,
+               u.email user_email,
+               u.created_at user_created_at
+        from board_tb b
+        INNER JOIN user_tb u
+        ON b.user_id = u.id
+        where b.id = #{id}
+    </select>
+
     <select id="findAll" resultType="shop.mtcoding.datatransperobjectex.model.board.Board">
         select * from board_tb
     </select>
@@ -24,6 +38,5 @@
     <update id="updateById" >
         update board_tb set title= #{title}, content= #{content} where id = #{id}
     </update>
-
 
 </mapper>
