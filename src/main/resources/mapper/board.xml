@@ -6,13 +6,13 @@
 <mapper namespace="shop.mtcoding.datatransperobjectex.model.board.BoardRepository">
 
 
-    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto2">
+    <resultMap id="v3ResultMap" type="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV3">
         <id property="id" column="id" />
         <result property="title" column="title" />
         <result property="content" column="content" />
         <result property="createdAt" column="created_at" />
         <!--  오브젝트면 association, 컬렉션이면 collection      -->
-        <association property="user" javaType="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto2$UserDto">
+        <association property="user" javaType="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV3$UserDto">
             <id property="id" column="id" />
             <result property="username" column="username" />
             <result property="password" column="password" />
@@ -21,7 +21,7 @@
         </association>
     </resultMap>
 
-    <select id="findByIdJoinUser3" resultMap="boardJoinUserDto2">
+    <select id="findByIdJoinUserV3" resultMap="v3ResultMap">
         select *
         from board_tb b
                  INNER JOIN user_tb u
@@ -46,12 +46,12 @@
         <result property="createdAt" column="created_at" />
     </resultMap>
 
-    <resultMap id="boardJoinUserDto" type="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto">
+    <resultMap id="boardJoinUserDto" type="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV1">
         <association property="board" resultMap="boardDto" />
         <association property="user" resultMap="userDto" />
     </resultMap>
 
-    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
+    <select id="findByIdJoinUserV2" resultMap="boardJoinUserDto">
         select *
         from board_tb b
         INNER JOIN user_tb u
@@ -59,7 +59,7 @@
         where b.id = #{id}
     </select>
 
-    <select id="findByIdJoinUser" resultType="shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto">
+    <select id="findByIdJoinUserV1" resultType="shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDtoV1Flattern">
         select b.*,
                u.id user_id,
                u.username user_username,

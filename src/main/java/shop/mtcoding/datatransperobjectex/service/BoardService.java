@@ -2,10 +2,10 @@ package shop.mtcoding.datatransperobjectex.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto;
-import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto2;
-import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto;
-import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto2;
+import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDtoV1Flattern;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV2;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV1;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV3;
 import shop.mtcoding.datatransperobjectex.model.board.BoardRepository;
 
 @RequiredArgsConstructor
@@ -14,31 +14,30 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public BoardDetailOutDto2 viewPostDetail(Integer id) { // 서비스에서 dto 가공
+    public BoardJoinUserDtoV2 viewPostDetailV1(Integer id) { // 서비스에서 dto 가공
 
-        BoardDetailOutDto boardDetailOutDto = boardRepository.findByIdJoinUser(id);
-        System.out.println("디버그 : " + boardDetailOutDto.toString());
-        BoardDetailOutDto2 boardDetailOutDto2 = new BoardDetailOutDto2(boardDetailOutDto);
-        System.out.println("디버그 : " + boardDetailOutDto2.toString());
+        BoardDetailOutDtoV1Flattern flatDto = boardRepository.findByIdJoinUserV1(id);
+        System.out.println("디버그 : " + flatDto.toString());
+        BoardJoinUserDtoV2 ormDto = new BoardJoinUserDtoV2(flatDto);
+        System.out.println("디버그 : " + ormDto.toString());
 
-        return boardDetailOutDto2;
+        return ormDto;
     }
 
-    public BoardJoinUserDto viewPostDetail2(Integer id) { // 서비스에서 dto 가공
+    public BoardJoinUserDtoV1 viewPostDetailV2(Integer id) { // 서비스에서 dto 가공
 
-        BoardJoinUserDto boardJoinUserDto = boardRepository.findByIdJoinUser2(id);
-        System.out.println("디버그 : " + boardJoinUserDto.toString());
+        BoardJoinUserDtoV1 ormDto = boardRepository.findByIdJoinUserV2(id);
+        System.out.println("디버그 : " + ormDto.toString());
 
 
-        return boardJoinUserDto;
+        return ormDto;
     }
 
-    public BoardJoinUserDto2 viewPostDetail3(Integer id) { // 서비스에서 dto 가공
+    public BoardJoinUserDtoV3 viewPostDetailV3(Integer id) { // 서비스에서 dto 가공
 
-        BoardJoinUserDto2 boardJoinUserDto2 = boardRepository.findByIdJoinUser3(id);
-        System.out.println("디버그 : " + boardJoinUserDto2.toString());
+        BoardJoinUserDtoV3 ormDto = boardRepository.findByIdJoinUserV3(id);
+        System.out.println("디버그 : " + ormDto.toString());
 
-
-        return boardJoinUserDto2;
+        return ormDto;
     }
 }

@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.sql.Timestamp;
 
 @Getter @Setter @ToString
-public class BoardDetailOutDto {
+public class BoardDetailOutDtoV1Flattern {
     private Integer id;
     private String title;
     private String content;

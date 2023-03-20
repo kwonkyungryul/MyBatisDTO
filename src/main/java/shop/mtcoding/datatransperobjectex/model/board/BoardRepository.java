@@ -1,20 +1,19 @@
 package shop.mtcoding.datatransperobjectex.model.board;
 
 import org.apache.ibatis.annotations.Mapper;
-import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto;
-import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto;
-import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto2;
-import shop.mtcoding.datatransperobjectex.model.user.User;
+import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDtoV1Flattern;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV1;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDtoV3;
 
 import java.util.List;
 
 @Mapper
 public interface BoardRepository {
-    public BoardJoinUserDto2 findByIdJoinUser3(int id);
+    public BoardJoinUserDtoV3 findByIdJoinUserV3(int id);
 
-    public BoardJoinUserDto findByIdJoinUser2(int id);
+    public BoardJoinUserDtoV1 findByIdJoinUserV2(int id);
 
-    public BoardDetailOutDto findByIdJoinUser(int id);
+    public BoardDetailOutDtoV1Flattern findByIdJoinUserV1(int id);
 
     public int insert(Board board);
 

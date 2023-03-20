@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.sql.Timestamp;
 
 @Getter @Setter
-public class BoardJoinUserDto2 {
+public class BoardJoinUserDtoV3 {
     private Integer id;
     private String title;
     private String content;
