@@ -5,6 +5,34 @@
 
 <mapper namespace="shop.mtcoding.datatransperobjectex.model.board.BoardRepository">
 
+    <resultMap id="boardDto" type="shop.mtcoding.datatransperobjectex.dto.BoardDto">
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <resultMap id="userDto" type="shop.mtcoding.datatransperobjectex.dto.UserDto">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="email" column="email" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <resultMap id="boardJoinUserDto" type="shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto">
+        <association property="board" resultMap="boardDto" />
+        <association property="user" resultMap="userDto" />
+    </resultMap>
+
+    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
+        select *
+        from board_tb b
+        INNER JOIN user_tb u
+        ON b.user_id = u.id
+        where b.id = #{id}
+    </select>
+
     <select id="findByIdJoinUser" resultType="shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto">
         select b.*,
                u.id user_id,
