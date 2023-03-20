@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto;
 import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto2;
 import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto2;
 import shop.mtcoding.datatransperobjectex.model.board.BoardRepository;
 
 @RequiredArgsConstructor
@@ -30,5 +31,14 @@ public class BoardService {
 
 
         return boardJoinUserDto;
+    }
+
+    public BoardJoinUserDto2 viewPostDetail3(Integer id) { // 서비스에서 dto 가공
+
+        BoardJoinUserDto2 boardJoinUserDto2 = boardRepository.findByIdJoinUser3(id);
+        System.out.println("디버그 : " + boardJoinUserDto2.toString());
+
+
+        return boardJoinUserDto2;
     }
 }

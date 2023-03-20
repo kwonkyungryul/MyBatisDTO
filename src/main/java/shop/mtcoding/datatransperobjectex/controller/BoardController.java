@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import shop.mtcoding.datatransperobjectex.dto.BoardDetailOutDto2;
 import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto;
+import shop.mtcoding.datatransperobjectex.dto.BoardJoinUserDto2;
 import shop.mtcoding.datatransperobjectex.service.BoardService;
 
 @RequiredArgsConstructor
@@ -25,5 +26,11 @@ public class BoardController {
     public ResponseEntity<?> detailV2(@PathVariable Integer id) {
         BoardJoinUserDto boardJoinUserDto = boardService.viewPostDetail2(id);
         return ResponseEntity.ok().body(boardJoinUserDto);
+    }
+
+    @GetMapping("/board/v3/{id}")
+    public ResponseEntity<?> detailV3(@PathVariable Integer id) {
+        BoardJoinUserDto2 boardJoinUserDto2 = boardService.viewPostDetail3(id);
+        return ResponseEntity.ok().body(boardJoinUserDto2);
     }
 }
